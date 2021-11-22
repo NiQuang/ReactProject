@@ -6,7 +6,7 @@ import {
   Navigate
 } from "react-router-dom";
 
-import {create, list, remove} from './api/productAPI';
+import {create, list, remove, update} from './api/productAPI';
 
 import logo from './logo.svg';
 import './App.css';
@@ -19,6 +19,16 @@ import ProductsWebsite from "./pages/website/Product";
 import LayoutAdmin from "./layout/LayoutAdmin";
 import AddProduct from "./pages/admin/AddProduct";
 import ProductDetail from "./pages/website/ProductDetail";
+import ProductManager from "./pages/admin/Products";
+import EditProduct from "./pages/admin/Editproduct";
+import {ToastContainer, toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import LoginWithGoogle from "./pages/website/LoginWithGoogle";
+import SignUp from "./pages/website/Signup";
+import SignIn from "./pages/website/Signin";
+import PrivateAdmin from "./components/PrivateAdmin";
+
+
 
 function App() {
   useEffect ( () => {
@@ -48,27 +58,47 @@ const onHandleAdd = (product) => {
   });
 }
 
+const onHandleUpdate = (product) => {
+  update(product).then(() => {
+    const newProducts = products.map( (item) => {
+      return (item.id === product.id ? (product) : (item));
+    })
+    toast.success("Đã cập nhật thành công");
+    setProducts(newProducts);
+  });
+}
+
   return (
     <div className="App">
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element ={<LayoutWebsite />}> 
             <Route index element = {<div>Home Page</div>} />
             <Route path="product"
-            element = {<ProductsWebsite products = {products} onRemove={onHandleRemove}/>} />
+            element = {<ProductsWebsite products = {products}/>} />
             <Route path="product/:id" element = {<ProductDetail  />} />
             <Route path="category" element = {<div>Danh muc san pham</div>} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="login" element={<LoginWithGoogle />} />
+            <Route path="signup" element={<SignUp />} />
+
           </Route>
 
-          <Route path="admin/*" element={<LayoutAdmin />}>
+          <Route path="admin/*"
+           element={
+           <PrivateAdmin>
+             <LayoutAdmin />
+            </PrivateAdmin>
+           }>
             <Route index element={< Navigate to="dashboard"/>}/>
             <Route path="dashboard" element={<div>Dashboard Product</div>} />
             <Route path="product" 
-              element = {<div>Product Manager</div>} />
+              element = {<ProductManager products={products}  onRemove={onHandleRemove} />} />
             <Route path = "product/add" 
               element={<AddProduct onAdd={onHandleAdd} />}/>
             <Route path = "product/:id/edit"
-              element={<div>Edit Products</div>}/>
+              element={<EditProduct onUpdate={onHandleUpdate}/>}/>
 
           </Route>
 

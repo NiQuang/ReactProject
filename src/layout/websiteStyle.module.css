@@ -1,0 +1,11 @@
+.header__list {
+    display: flex;
+    list-style: none;
+    background-color: #000;
+}
+
+.header__listItem {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+}
