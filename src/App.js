@@ -27,6 +27,16 @@ import LoginWithGoogle from "./pages/website/LoginWithGoogle";
 import SignUp from "./pages/website/Signup";
 import SignIn from "./pages/website/Signin";
 import PrivateAdmin from "./components/PrivateAdmin";
+import HeaderComponent from "./components/HeaderComponent";
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './layout/assets/css/base.css';
+import './layout/assets/css/main.css';
+import './layout/assets/css/grid.css';
+import './layout/assets/css/grid.css';
+import './layout/assets/css/responsive.css';
+import './layout/assets/img/chplay.png';
+import './layout/assets/fontawesome-free-5.15.4-web/css/all.min.css';
 
 
 
@@ -70,6 +80,7 @@ const onHandleUpdate = (product) => {
 
   return (
     <div className="App">
+      {/* <HeaderComponent /> */}
       <ToastContainer />
       <BrowserRouter>
         <Routes>
@@ -82,7 +93,6 @@ const onHandleUpdate = (product) => {
             <Route path="signin" element={<SignIn />} />
             <Route path="login" element={<LoginWithGoogle />} />
             <Route path="signup" element={<SignUp />} />
-
           </Route>
 
           <Route path="admin/*"
@@ -91,6 +101,7 @@ const onHandleUpdate = (product) => {
              <LayoutAdmin />
             </PrivateAdmin>
            }>
+            
             <Route index element={< Navigate to="dashboard"/>}/>
             <Route path="dashboard" element={<div>Dashboard Product</div>} />
             <Route path="product" 

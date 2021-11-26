@@ -23,9 +23,19 @@ const AddProduct = (props) =>{
                     placeholder="Ten san pham"
                     {...register("name")}/>
                 {errors.name && <p>Field is required</p>}
+                <br/>
                 <input type="number"
                     palcehoder="gia san pham"
                     {...register("price")}/>
+                <br/>
+                <select {...register("category")}>
+                    <option value="1">Hang loai 1</option>
+                    <option value="2">Hang loai 2</option>
+                    <option value="3">Hang loai 3</option>
+                </select>
+                <br/>
+                <textarea placeholder="mota" {...register("detail")}/>
+                <br/>
                     <button>Them san pham</button>
             </form>
 

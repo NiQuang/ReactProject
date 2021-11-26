@@ -5,6 +5,9 @@ export default function LayoutAdmin() {
     <div>
       <ul>
         <li>
+          <Link to="/">go home</Link>
+        </li>
+        <li>
           <Link to="/admin">Dashboard</Link>
         </li>
         <li>

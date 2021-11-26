@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { read } from "../../api/productAPI";
 
 const ProductDetail = (props) => {
+    const imgdetal ={
+        "width":"100%",
+        "height":"100%"
+    }
     // lay id tu url
     const {id} = useParams();
     const [product, setProduct] = useState({});
@@ -12,11 +16,20 @@ const ProductDetail = (props) => {
         });
     }, [id]);
     return (
-        product &&
-        <div>
-            <h2>{product.name}</h2>
-            <img src={product.img} alt={product.name} />
-        </div>
+        product &&(
+            <div className="row">
+                <div className="col l-4">
+                    <img style={imgdetal} src={product.img} alt={product.name} />
+                </div>
+                <div className="col l-8">
+                    <h2>{product.name}</h2>
+                    <p>{product.price}</p>
+                </div>
+
+                
+            </div>
+        )
+        
     )
 }
 
