@@ -993,11 +993,31 @@
     color: var(--white-color);
 }
 
+.router__list{
+    background-color: #fff;
+    width: 100%;
+}
+
+.header__categories{
+    /* position: absolute;
+    left: 0;
+    right: 0; */
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    /* max-width: 960px; */
+    height: 40px;
+    padding: 0;
+    background-color: #999;
+}
 
 /* App container */
 .app__content{
     padding-top: 36px;
 }
+
+
 
 .app__container{
     background-color: #F5F5F5;

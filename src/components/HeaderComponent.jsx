@@ -6,7 +6,7 @@ const HeaderComponent = () =>{
     const auth = isAuthenticate;
     return (auth.id !== 1) || (!auth) ? (
         <div style={style.header}>
-            afsafs
+            
         </div>
     ) : (
         <div>

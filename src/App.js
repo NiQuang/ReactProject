@@ -37,6 +37,7 @@ import './layout/assets/css/grid.css';
 import './layout/assets/css/responsive.css';
 import './layout/assets/img/chplay.png';
 import './layout/assets/fontawesome-free-5.15.4-web/css/all.min.css';
+import HomePage from "./pages/website/HomePage";
 
 
 
@@ -85,7 +86,7 @@ const onHandleUpdate = (product) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element ={<LayoutWebsite />}> 
-            <Route index element = {<div>Home Page</div>} />
+            <Route index element = {<HomePage />} />
             <Route path="product"
             element = {<ProductsWebsite products = {products}/>} />
             <Route path="product/:id" element = {<ProductDetail  />} />

@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import style from '../components/webStyle.module.css';
-
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -489,7 +489,6 @@ export default function LayoutWebsite() {
 
                         </div>
 
-
                     </div>
                 </div>
             </div>
@@ -507,146 +506,47 @@ export default function LayoutWebsite() {
                     <a href="" className="header__sort-link">Giá</a>
                 </li>
             </ul>
-
         </header>     
       <div className="app__container">
       <div className="grid wide">
+      <div className="row no-gutters router__list">
+                  <ul className="header__categories">
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/">Home Page</Link>
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/product">Product</Link>
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/category">Danh muc</Link>
+                      
+                       {/* <Dropdown>
+                         <Dropdown.Toggle variant="success" id="dropdown-basic">
+                           Danh muc
+                         </Dropdown.Toggle>
+                         <Dropdown.Menu>
+                           <Dropdown.Item>San pham A</Dropdown.Item>
+                           <Dropdown.Item>San pham b</Dropdown.Item>
+                           <Dropdown.Item>San pham c</Dropdown.Item>
+                         </Dropdown.Menu>
+                       </Dropdown> */}
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/admin">Quản trị</Link>
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/signin">sign in</Link>
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/signup">sign up</Link>
+                    </li>
+                    <li className="header__categories-item">
+                      <Link className="category-item__link" to="/login">Login with google</Link>
+                    </li>
+                   </ul>
+      </div>
       <div className="row sm-gutter app__content">
-        <div className="col l-2 m-0 c-0">
-            <nav className="category">
-                <h3 className="category__heading">Danh mục</h3>
-                <ul className="category-list">
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/">Home Page</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/product">Product</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/category">Danh muc</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/admin">Quản trị</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/signin">sign in</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/signup">sign up</Link>
-                  </li>
-                  <li className="category-item category-item--active">
-                    <Link className="category-item__link" to="/login">Login with google</Link>
-                  </li>
-                </ul>
-            </nav>
-        </div>
-        <div className="col l-10 m-12 c-12">
-            <div className="home-filter hide-on-mobile-tablet">
-                <span className="home-filter__label">
-                    Sắp xếp theo
-                </span>
-                <button className="home-filter__btn btn">
-                    Phổ biến
-                </button>
-                <button className="home-filter__btn btn btn--primary">
-                    Mới nhất
-                </button>
-                <button className="home-filter__btn btn">
-                    Bán chạy
-                </button>
-                <div className="select-input">
-                    <span className="select-input__label">
-                        Giá
-                    </span>
-                    <i className="select-input__icon fas fa-chevron-down"></i>
-                    <ul className="select-input__list">
-                        <li className="select-input__item">
-                            <a href="" className="select-input__item-link">
-                                Giá: Thấp đến cao
-                            </a>
-                        </li>
-                        <li className="select-input__item">
-                            <a href="" className="select-input__item-link">
-                                Giá: Cao đến thấp
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div className="home-filter__page">
-                    <span className="home-filter__page-info">
-                        <span className="home-filter__page-current">1</span>/14
-                    </span>
-                    <div className="home-filter__page-control">
-                        <a href="" className="home-filter__page-btn home-filter__page-btn-disable">
-                            <i className="home-filter__page-icon fas fa-angle-left"></i>
-                        </a>
-                        <a href="" className="home-filter__page-btn">
-                            <i className="home-filter__page-icon fas fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <nav className="mobile-category">
-                <ul className="mobile-category__list">
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích Dụng cụ thiết bị & tiện ích Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                    <li className="mobile-category__item">
-                        <a href="" className="mobile-category__link">Dụng cụ thiết bị & tiện ích</a>
-                    </li>
-                </ul>
-            </nav>
-            {/* <!-- Home product --> */}
-            <div className="home-product">
-              <div className="row sm-gutter app__content">
-                <Outlet />
-              </div>
-            </div>
-        </div>
+            <Outlet /> 
     </div>
     </div>
       </div>
