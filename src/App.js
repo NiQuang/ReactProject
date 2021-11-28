@@ -38,6 +38,7 @@ import './layout/assets/css/responsive.css';
 import './layout/assets/img/chplay.png';
 import './layout/assets/fontawesome-free-5.15.4-web/css/all.min.css';
 import HomePage from "./pages/website/HomePage";
+import { cateList } from "./api/categoriesAPI";
 
 
 
@@ -46,12 +47,15 @@ function App() {
     document.title = 'My project';
   });
 const [products, setProducts] = useState([]);
-
+const [categories, setCategories] = useState([]);
   useEffect( () =>{
     list().then( (response) => {
       setProducts(response.data);
     })
-    console.log(products);
+
+    cateList().then((response) =>{
+      setCategories(response.data);
+    })
   }, []);
 
 const onHandleRemove = (id) => {
@@ -88,7 +92,7 @@ const onHandleUpdate = (product) => {
           <Route path="/" element ={<LayoutWebsite />}> 
             <Route index element = {<HomePage />} />
             <Route path="product"
-            element = {<ProductsWebsite products = {products}/>} />
+            element = {<ProductsWebsite products = {products} categories={categories}/>} />
             <Route path="product/:id" element = {<ProductDetail  />} />
             <Route path="category" element = {<div>Danh muc san pham</div>} />
             <Route path="signin" element={<SignIn />} />
