@@ -1,18 +1,42 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
 
-const ProductsWebsite = ({ products, categories}) => {
+const ProductsWebsite = ({ products, series, onFindByModel}) => {
 
+    const [currentList, setCurrentlist] = useState([]);
+    // setProductList(products);
+
+    const [wantedModelId,setWantedModelId] = useState(0);
+    useEffect(() => {
+        setCurrentlist(products);
+    },[])
+    useEffect(() => {
+        if(wantedModelId !== 0){
+            const wantedList = products.filter((item) => {
+                return item.modelId === wantedModelId;
+            })
+            setCurrentlist(wantedList);
+            console.log(wantedList);
+        }
+    }, [wantedModelId]);
+
+    const productByModel = (id) =>{
+        setWantedModelId(id);
+    }
     return (
         <div className="row">
             <div className="col l-4">
                 <div className="col">
-                    CATEGORIES
+                    IPhoneSeries
                 </div>
-                {categories.map( (item, index) => {
+                <div className="col">
+                    All
+                </div>
+                {series.map( (item, index) => {
                     return (
-                        <div className="col" key={index}>
+                        <div className="col" key={index} onClick={() => productByModel(item.id)}>
                             {item.name}
                         </div>
                     );
@@ -20,7 +44,7 @@ const ProductsWebsite = ({ products, categories}) => {
             </div>
             <div className="col l-8">
                 <div className="row">
-                    {products.map((item, index) => {
+                    {currentList.map((item, index) => {
                         return (
                             <div className="col l-2-4 c-6" key={index}>
                                 {/* <!-- product-item --> */}

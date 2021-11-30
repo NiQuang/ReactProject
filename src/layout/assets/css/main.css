@@ -1562,3 +1562,24 @@ i.home-product-item__like-icon-yes{
 .header__moblie-search{
     display: none;
 }
+
+/* css for admin layout */
+.admin__content{
+    position: relative;
+}
+
+.admin__categories{
+    background-color: rgb(61, 73, 126);
+    list-style: none;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    width: 25%;
+}
+.admin__categories-item{
+    color: #fff;
+}
+
+.prd__manage-img{
+    width: 60px;
+}

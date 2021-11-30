@@ -12,3 +12,7 @@ export const isAuthenticate = () => {
         return false;
     }
 };
+
+export const removeAuthenticate = () =>{
+    localStorage.removeItem("user");
+}

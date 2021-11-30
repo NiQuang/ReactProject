@@ -1,7 +1,7 @@
 import instance from "./instance";
 
 export const cateList = () => {
-    const url = "/categories";
+    const url = "/model";
     return instance.get(url);
 }
 

@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import style from '../components/webStyle.module.css';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { isAuthenticate } from "../authenticate";
 
 
 
@@ -515,11 +516,11 @@ export default function LayoutWebsite() {
                       <Link className="category-item__link" to="/">Home Page</Link>
                     </li>
                     <li className="header__categories-item">
-                      <Link className="category-item__link" to="/product">Product</Link>
+                      <Link className="category-item__link" to="/ant">Test ant</Link>
                     </li>
                     <li className="header__categories-item">
-                      <Link className="category-item__link" to="/category">Danh muc</Link>
-                      
+                      <Link className="category-item__link" to="/product">Product</Link>
+                    </li>  
                        {/* <Dropdown>
                          <Dropdown.Toggle variant="success" id="dropdown-basic">
                            Danh muc
@@ -530,13 +531,15 @@ export default function LayoutWebsite() {
                            <Dropdown.Item>San pham c</Dropdown.Item>
                          </Dropdown.Menu>
                        </Dropdown> */}
-                    </li>
                     <li className="header__categories-item">
                       <Link className="category-item__link" to="/admin">Quản trị</Link>
                     </li>
-                    <li className="header__categories-item">
+                        <li className="header__categories-item">
                       <Link className="category-item__link" to="/signin">sign in</Link>
                     </li>
+                    {/* <li className="header__categories-item">
+                      <Link className="category-item__link" to="/signin">sign in</Link>
+                    </li> */}
                     <li className="header__categories-item">
                       <Link className="category-item__link" to="/signup">sign up</Link>
                     </li>

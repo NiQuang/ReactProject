@@ -19,13 +19,14 @@ import ProductsWebsite from "./pages/website/Product";
 import LayoutAdmin from "./layout/LayoutAdmin";
 import AddProduct from "./pages/admin/AddProduct";
 import ProductDetail from "./pages/website/ProductDetail";
-import ProductManager from "./pages/admin/Products";
+import ProductManager from "./pages/admin/ProductsManager";
 import EditProduct from "./pages/admin/Editproduct";
 import {ToastContainer, toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LoginWithGoogle from "./pages/website/LoginWithGoogle";
 import SignUp from "./pages/website/Signup";
 import SignIn from "./pages/website/Signin";
+import SignOut from "./pages/website/Signin";
 import PrivateAdmin from "./components/PrivateAdmin";
 import HeaderComponent from "./components/HeaderComponent";
 
@@ -39,7 +40,10 @@ import './layout/assets/img/chplay.png';
 import './layout/assets/fontawesome-free-5.15.4-web/css/all.min.css';
 import HomePage from "./pages/website/HomePage";
 import { cateList } from "./api/categoriesAPI";
+import { isAuthenticate } from "./authenticate";
 
+import 'antd/dist/antd.css';
+import AntDesign from "./pages/website/AntDesign";
 
 
 function App() {
@@ -47,14 +51,15 @@ function App() {
     document.title = 'My project';
   });
 const [products, setProducts] = useState([]);
-const [categories, setCategories] = useState([]);
+const [series, setSeries] = useState([]);
+const [popularList, setPopularList] = useState([]);
   useEffect( () =>{
     list().then( (response) => {
       setProducts(response.data);
     })
 
     cateList().then((response) =>{
-      setCategories(response.data);
+      setSeries(response.data);
     })
   }, []);
 
@@ -83,6 +88,11 @@ const onHandleUpdate = (product) => {
   });
 }
 
+const findByModel = (id) => {
+  console.log(id);
+}
+
+
   return (
     <div className="App">
       {/* <HeaderComponent /> */}
@@ -91,10 +101,10 @@ const onHandleUpdate = (product) => {
         <Routes>
           <Route path="/" element ={<LayoutWebsite />}> 
             <Route index element = {<HomePage />} />
+            <Route path="/ant" element = {<AntDesign />} />
             <Route path="product"
-            element = {<ProductsWebsite products = {products} categories={categories}/>} />
-            <Route path="product/:id" element = {<ProductDetail  />} />
-            <Route path="category" element = {<div>Danh muc san pham</div>} />
+            element = {<ProductsWebsite products = {products} series={series} onFindByModel={findByModel}/>} />
+            <Route path="product/:id" element = {<ProductDetail  products={products}/>} />
             <Route path="signin" element={<SignIn />} />
             <Route path="login" element={<LoginWithGoogle />} />
             <Route path="signup" element={<SignUp />} />
