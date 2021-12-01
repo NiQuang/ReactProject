@@ -70,6 +70,10 @@ const onHandleRemove = (id) => {
   })
 }
 
+const onHandleAdd2 = (product) => {
+  console.log(product);
+}
+
 const onHandleAdd = (product) => {
   const fakeProduct = {id: products.length +1, ...product};
 
@@ -120,11 +124,11 @@ const findByModel = (id) => {
             <Route index element={< Navigate to="dashboard"/>}/>
             <Route path="dashboard" element={<div>Dashboard Product</div>} />
             <Route path="product" 
-              element = {<ProductManager products={products}  onRemove={onHandleRemove} />} />
+              element = {<ProductManager products={products}  onRemove={onHandleRemove} models={series}/>} />
             <Route path = "product/add" 
-              element={<AddProduct onAdd={onHandleAdd} />}/>
+              element={<AddProduct onAdd={onHandleAdd} models={series}/>}/>
             <Route path = "product/:id/edit"
-              element={<EditProduct onUpdate={onHandleUpdate}/>}/>
+              element={<EditProduct onUpdate={onHandleUpdate} models={series}/>}/>
 
           </Route>
 

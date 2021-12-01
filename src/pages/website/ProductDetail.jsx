@@ -9,16 +9,16 @@ const ProductDetail = ({products}) => {
         "height": "100%"
     }
     //popular list 
+    const [product, setProduct] = useState({});
 
     const [popularList, setPopularList] = useState([]);
     useEffect(() =>{
         setPopularList(products.filter((item, index) =>{
-            return item.isInfluence;
+            return item.popular;
         }));
     },[]);
     // lay id tu url
     const { id } = useParams();
-    const [product, setProduct] = useState({});
     useEffect(() => {
         read(id).then((response) => {
             setProduct(response.data);
@@ -35,7 +35,11 @@ const ProductDetail = ({products}) => {
                     <div className="col l-8">
                         <h2>{product.name}</h2>
                         <p>{product.price}</p>
+                        <span>Dung luong: {product.rom} Gb</span>
+                        <p>Chi con lai: {product.quantity} san pham</p>
                         <p>{product.detail}</p>
+                        
+                        <button>Add to cart</button>
                     </div>
                 </div>
                 <div className="row">

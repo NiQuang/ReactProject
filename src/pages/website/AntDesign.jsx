@@ -1,20 +1,54 @@
 import React, { useState } from 'react';
-import { render } from 'react-dom';
-import { DatePicker, message, Alert, Row, Col } from 'antd';
-import 'antd/dist/antd.css';
+import { Form, Input } from 'antd';
+
+const CustomizedForm = ({ onChange, fields }) => (
+  <Form
+    name="global_state"
+    layout="inline"
+    fields={fields}
+    onFieldsChange={(_, allFields) => {
+      onChange(allFields);
+    }}
+  >
+    <Form.Item
+      name="username"
+      label="Username"
+      rules={[
+        {
+          required: true,
+          message: 'Username is required!',
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item><Form.Item
+      name="price"
+      label="Price"
+      rules={[
+        {
+          required: true,
+          message: 'Price is required!',
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+  </Form>
+);
 
 const AntDesign = () => {
-    const [date, setDate] = useState(null);
-    const handleChange = value => {
-      message.info(`Selected Date: ${value ? value.format('YYYY-MM-DD') : 'None'}`);
-      setDate(value);
-    };
-    return (
-        <Row>
-          <Col span={6}>col 6</Col>
-          <Col span={18}>col 18</Col>
-        </Row>
-      );
+  const [fields, setFields] = useState([]);
+  return (
+    <>
+      <CustomizedForm
+        fields={fields}
+        onChange={(newFields) => {
+          setFields(newFields);
+        }}
+      />
+      <pre className="language-bash">{JSON.stringify(fields, null, 2)}</pre>
+    </>
+  );
 };
 
 export default AntDesign;

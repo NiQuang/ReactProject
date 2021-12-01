@@ -1,23 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Table, Tag, Space, Image } from 'antd';
 import { useEffect, useState } from 'react';
-const ProductManager = ({ products, onRemove }) => {
+import { inMemoryPersistence } from '@firebase/auth';
+const ProductManager = ({ products, onRemove, models }) => {
     const dataProducts = products;
     const { Column, ColumnGroup } = Table;
     const data = products;
+    
+    const getModelName = (id) => {
+        const model=models.find((item) =>{
+            return item.id === id;
+        });
+        return model?.name;
+    }
+
     return (
 
-        <Table dataSource={data} rowKey="id">
-            <Column title="Index" dateIndex="index" key="index" 
-                
-            />
+        <Table dataSource={data} rowKey="id" bordered>
             <Column title="Name" dataIndex="name" key ="name" />
             <Column title="img" dataIndex="img" key="img" 
                     render={(text, record) => (
                         <img src={record.img} alt={record.name} className="prd__manage-img"/>
                     )}
             />
-            <Column title="Categoty" dataIndex="categotyId" key="category" />
+            <Column title="Model" dataIndex="modelId" key="modelId" 
+                render={(text, record) =>(
+                    <p>{getModelName(record.modelId)}</p>
+                )
+                }
+            />
             <Column
                 title="Action"
                 key="action"
@@ -55,3 +66,4 @@ const ProductManager = ({ products, onRemove }) => {
 };
 
 export default ProductManager;
+
